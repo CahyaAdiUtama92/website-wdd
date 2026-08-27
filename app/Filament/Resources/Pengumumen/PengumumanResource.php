@@ -36,9 +36,10 @@ class PengumumanResource extends Resource
                 \Filament\Forms\Components\Textarea::make('keterangan')
                     ->columnSpanFull(),
                 \Filament\Forms\Components\FileUpload::make('file')
+                    ->disk('public')
+                    ->directory('pengumuman')
                     ->acceptedFileTypes(['application/pdf'])
                     ->maxSize(10240)
-                    ->directory('pengumuman')
                     ->helperText('Harap unggah file berformat PDF saja (Maks. 10MB). Jika Anda memiliki file Word, silakan "Save As PDF" terlebih dahulu.')
                     ->required(),
                 \Filament\Forms\Components\Toggle::make('is_published')
@@ -62,6 +63,14 @@ class PengumumanResource extends Resource
             ->recordActions([
                 \Filament\Actions\ViewAction::make(),
                 \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('buka_file')
+                    ->label('Buka PDF')
+                    ->icon('heroicon-o-document-text')
+                    ->url(fn (Pengumuman $record) =>
+                        route('pengumuman.file', basename($record->file))
+                    )
+                    ->openUrlInNewTab()
+                    ->visible(fn (Pengumuman $record) => filled($record->file)),
                 \Filament\Actions\DeleteAction::make(),
             ])
             ->toolbarActions([

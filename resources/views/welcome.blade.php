@@ -195,7 +195,7 @@
 
                                 @if($pengumuman->file)
                                     <div class="mt-auto pt-4 border-t border-gray-100">
-                                        <a href="{{ Storage::url($pengumuman->file) }}" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-medium text-sm transition group">
+                                        <a href="{{ route('pengumuman.file', basename($pengumuman->file)) }}" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 font-medium text-sm transition group">
                                             Lihat Dokumen
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
