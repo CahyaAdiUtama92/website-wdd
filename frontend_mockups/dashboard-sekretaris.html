@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sekretaris - WDD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff', 100: '#e0f2fe', 500: '#0ea5e9',
+                            600: '#0284c7', 700: '#0369a1', 900: '#0c4a6e',
+                        },
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased h-screen flex overflow-hidden selection:bg-primary-500 selection:text-white">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-slate-200 flex flex-col hidden md:flex">
+        <div class="h-20 flex items-center px-6 border-b border-slate-200">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/30">
+                    W
+                </div>
+                <span class="font-bold text-lg text-slate-900 tracking-tight">WDD Admin</span>
+            </div>
+        </div>
+        
+        <div class="p-6 border-b border-slate-100 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-100">
+                <img src="https://ui-avatars.com/api/?name=Sekretaris+WDD&background=3b82f6&color=fff" alt="User Profile" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <div class="font-semibold text-slate-900">Ni Made Suasti</div>
+                <div class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full inline-block mt-1">Sekretaris</div>
+            </div>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-blue-50 text-blue-700 rounded-lg font-medium transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Dashboard
+            </a>
+            
+            <div class="pt-4 pb-2">
+                <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Kelola Data</p>
+            </div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                Data Anggota
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Rapat & Absensi
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Notulen Rapat
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                Pengumuman
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-200">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-red-600 hover:bg-red-50 rounded-lg font-medium transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                Keluar
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
+            <h1 class="text-2xl font-bold text-slate-900">Dashboard Sekretaris</h1>
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-slate-400 hover:text-slate-600 transition bg-slate-50 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="flex-1 overflow-y-auto p-8">
+            
+            <!-- Quick Actions -->
+            <div class="flex flex-wrap gap-4 mb-8">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium shadow-sm shadow-blue-500/30 transition flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    Tambah Anggota
+                </button>
+                <button class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-5 py-2.5 rounded-lg font-medium shadow-sm transition flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    Jadwalkan Rapat
+                </button>
+                <button class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-5 py-2.5 rounded-lg font-medium shadow-sm transition flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                    Buat Pengumuman
+                </button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <!-- Stat Card 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 mb-1">Total Anggota</p>
+                    <h3 class="text-3xl font-bold text-slate-900">128</h3>
+                    <p class="text-xs text-slate-500 mt-2">Terdaftar dalam sistem</p>
+                </div>
+                <!-- Stat Card 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 mb-1">Anggota Aktif</p>
+                    <h3 class="text-3xl font-bold text-emerald-600">124</h3>
+                    <p class="text-xs text-slate-500 mt-2">Status keanggotaan aktif</p>
+                </div>
+                <!-- Stat Card 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 mb-1">Rapat Bulan Ini</p>
+                    <h3 class="text-3xl font-bold text-slate-900">2</h3>
+                    <p class="text-xs text-slate-500 mt-2">Total agenda rapat</p>
+                </div>
+                <!-- Stat Card 4 -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
+                    <p class="text-sm font-medium text-slate-500 mb-1">Pengumuman Aktif</p>
+                    <h3 class="text-3xl font-bold text-blue-600">3</h3>
+                    <p class="text-xs text-slate-500 mt-2">Tampil di beranda</p>
+                </div>
+            </div>
+
+            <!-- Members List -->
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden flex flex-col">
+                <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                    <h3 class="text-lg font-bold text-slate-900">Daftar Anggota Terbaru</h3>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Cari nama atau NIA..." class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 w-64">
+                        <a href="#" class="text-sm text-blue-600 font-medium hover:underline flex items-center px-2">Lihat Semua</a>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider border-y border-slate-200">
+                                <th class="py-3 px-6 font-medium">NIA</th>
+                                <th class="py-3 px-6 font-medium">Nama Anggota</th>
+                                <th class="py-3 px-6 font-medium">Role / Jabatan</th>
+                                <th class="py-3 px-6 font-medium">Status</th>
+                                <th class="py-3 px-6 font-medium text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="py-4 px-6 text-slate-600 font-medium">090001</td>
+                                <td class="py-4 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                                            <img src="https://ui-avatars.com/api/?name=I+Wayan+Sudharma&background=random&color=fff" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-slate-900">I Wayan Sudharma</div>
+                                            <div class="text-xs text-slate-500">090001@paiketanwdd.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="text-xs font-medium text-slate-700 bg-slate-100 px-2 py-1 rounded-md">Ketua</span>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full text-xs font-medium">Aktif</span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <button class="text-slate-400 hover:text-blue-600 p-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="py-4 px-6 text-slate-600 font-medium">090002</td>
+                                <td class="py-4 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+                                            <img src="https://ui-avatars.com/api/?name=Ni+Made+Suasti&background=random&color=fff" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-slate-900">Ni Made Suasti</div>
+                                            <div class="text-xs text-slate-500">090002@paiketanwdd.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="text-xs font-medium text-slate-700 bg-slate-100 px-2 py-1 rounded-md">Sekretaris</span>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full text-xs font-medium">Aktif</span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <button class="text-slate-400 hover:text-blue-600 p-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition opacity-60">
+                                <td class="py-4 px-6 text-slate-600 font-medium">260001</td>
+                                <td class="py-4 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden grayscale">
+                                            <img src="https://ui-avatars.com/api/?name=Putu+Gede&background=random&color=fff" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-slate-900">Putu Gede</div>
+                                            <div class="text-xs text-slate-500">260001@paiketanwdd.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="text-xs font-medium text-slate-700 bg-slate-100 px-2 py-1 rounded-md">Anggota</span>
+                                </td>
+                                <td class="py-4 px-6">
+                                    <span class="bg-slate-200 text-slate-700 px-2.5 py-0.5 rounded-full text-xs font-medium">Nonaktif</span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <button class="text-slate-400 hover:text-blue-600 p-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>

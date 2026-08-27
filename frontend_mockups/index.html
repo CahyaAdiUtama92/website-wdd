@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiketan Warga Dura Desa (WDD)</title>
+    <meta name="description" content="Sistem Informasi Organisasi Paiketan Warga Dura Desa (WDD). Pusat informasi dan administrasi organisasi.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-primary-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary-500/30">
+                        W
+                    </div>
+                    <span class="font-bold text-xl text-slate-900 tracking-tight">WDD</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#beranda" class="text-slate-600 hover:text-primary-600 font-medium transition">Beranda</a>
+                    <a href="#profil" class="text-slate-600 hover:text-primary-600 font-medium transition">Profil</a>
+                    <a href="#struktur" class="text-slate-600 hover:text-primary-600 font-medium transition">Struktur</a>
+                    <a href="#pengumuman" class="text-slate-600 hover:text-primary-600 font-medium transition">Pengumuman</a>
+                </div>
+                <div class="hidden md:flex">
+                    <a href="#" class="px-6 py-2.5 rounded-full bg-slate-900 text-white font-medium hover:bg-slate-800 transition shadow-lg shadow-slate-900/20 transform hover:-translate-y-0.5">Login SSO</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-slate-100 opacity-90"></div>
+            <!-- Decorative blobs -->
+            <div class="absolute top-0 left-0 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="inline-block py-1 px-3 rounded-full bg-primary-100 text-primary-700 font-semibold text-sm mb-6 fade-in-up">Sistem Informasi Organisasi</span>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-8 leading-tight fade-in-up delay-100">
+                    Paiketan Warga <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Dura Desa</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 fade-in-up delay-200 leading-relaxed">
+                    Pusat informasi dan administrasi yang transparan, efisien, dan modern untuk seluruh anggota WDD.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up delay-300">
+                    <a href="#pengumuman" class="px-8 py-4 rounded-full bg-primary-600 text-white font-semibold hover:bg-primary-700 transition shadow-lg shadow-primary-500/30 transform hover:-translate-y-1">Lihat Pengumuman</a>
+                    <a href="#profil" class="px-8 py-4 rounded-full bg-white text-slate-700 font-semibold border border-slate-200 hover:border-primary-500 hover:text-primary-600 transition shadow-sm transform hover:-translate-y-1">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Organisasi -->
+    <section id="profil" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Organisasi WDD" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Tentang Organisasi WDD</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        Paiketan Warga Dura Desa (WDD) merupakan sebuah organisasi kemasyarakatan yang berfokus pada kesejahteraan dan kebersamaan warganya.
+                    </p>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Dengan sistem informasi yang terintegrasi, kami berkomitmen untuk meningkatkan transparansi, efisiensi administrasi, dan kemudahan berbagi informasi mulai dari kepengurusan hingga ke seluruh anggota.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div class="text-3xl font-bold text-primary-600 mb-2">Transparan</div>
+                            <div class="text-slate-600">Laporan keuangan & absensi yang terbuka.</div>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                            <div class="text-3xl font-bold text-primary-600 mb-2">Efisien</div>
+                            <div class="text-slate-600">Pengelolaan administrasi secara terpusat.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Struktur Organisasi -->
+    <section id="struktur" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Struktur Organisasi</h2>
+                <p class="text-lg text-slate-600">Susunan kepengurusan Paiketan Warga Dura Desa periode saat ini yang siap melayani dengan penuh dedikasi.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Ketua -->
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow border border-slate-100 relative overflow-hidden group">
+                    <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-primary-50 p-1">
+                        <img src="https://ui-avatars.com/api/?name=Ketua+WDD&background=0ea5e9&color=fff&size=150" alt="Ketua" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">I Wayan Sudharma</h3>
+                    <p class="text-primary-600 font-medium mb-4">Ketua</p>
+                    <p class="text-slate-500 text-sm">Menetapkan kebijakan umum dan memimpin jalannya organisasi.</p>
+                </div>
+                
+                <!-- Sekretaris -->
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow border border-slate-100">
+                    <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-blue-50 p-1">
+                        <img src="https://ui-avatars.com/api/?name=Sekretaris+WDD&background=3b82f6&color=fff&size=150" alt="Sekretaris" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">Ni Made Suasti</h3>
+                    <p class="text-blue-600 font-medium mb-4">Sekretaris</p>
+                    <p class="text-slate-500 text-sm">Mengelola data anggota, absensi rapat, notulen, dan pengumuman.</p>
+                </div>
+
+                <!-- Bendahara -->
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow border border-slate-100">
+                    <div class="w-32 h-32 mx-auto rounded-full mb-6 overflow-hidden border-4 border-indigo-50 p-1">
+                        <img src="https://ui-avatars.com/api/?name=Bendahara+WDD&background=6366f1&color=fff&size=150" alt="Bendahara" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-1">I Nyoman Wirata</h3>
+                    <p class="text-indigo-600 font-medium mb-4">Bendahara</p>
+                    <p class="text-slate-500 text-sm">Mengatur arus kas, mengelola iuran, donasi, dan pelaporan keuangan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengumuman -->
+    <section id="pengumuman" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12 border-b border-slate-100 pb-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Pengumuman Terbaru</h2>
+                    <p class="text-lg text-slate-600">Informasi terkini seputar kegiatan dan agenda WDD.</p>
+                </div>
+                <a href="#" class="hidden sm:flex text-primary-600 font-semibold hover:text-primary-700 items-center gap-2 transition">
+                    Lihat Semua
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card Pengumuman 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative rounded-2xl overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rapat Rutin" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg font-semibold text-slate-900 shadow-sm">
+                            28 Juni 2026
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3 text-sm text-primary-600 font-semibold uppercase tracking-wider">
+                        <span>Agenda Rapat</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition">Rapat Rutin Evaluasi Semester I Kepengurusan</h3>
+                    <p class="text-slate-600 line-clamp-2">Diberitahukan kepada seluruh anggota WDD untuk hadir pada rapat rutin evaluasi kinerja organisasi semester pertama yang akan dilaksanakan di balai desa.</p>
+                </div>
+
+                <!-- Card Pengumuman 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative rounded-2xl overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1607593892795-c266df1dcc13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kegiatan Sosial" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg font-semibold text-slate-900 shadow-sm">
+                            15 Juli 2026
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 mb-3 text-sm text-primary-600 font-semibold uppercase tracking-wider">
+                        <span>Sosial</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition">Kegiatan Bakti Sosial Bantuan Warga</h3>
+                    <p class="text-slate-600 line-clamp-2">Organisasi WDD akan menyelenggarakan kegiatan bakti sosial. Kami mengundang seluruh anggota untuk berpartisipasi sebagai relawan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-slate-300 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                            W
+                        </div>
+                        <span class="font-bold text-2xl text-white tracking-tight">WDD</span>
+                    </div>
+                    <p class="text-slate-400 mb-6 max-w-md">
+                        Sistem Informasi Organisasi Paiketan Warga Dura Desa. Meningkatkan transparansi keuangan, mempermudah administrasi, dan menyediakan informasi yang aktual.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Tautan Cepat</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#beranda" class="hover:text-primary-400 transition">Beranda</a></li>
+                        <li><a href="#profil" class="hover:text-primary-400 transition">Profil Organisasi</a></li>
+                        <li><a href="#struktur" class="hover:text-primary-400 transition">Struktur Kepengurusan</a></li>
+                        <li><a href="#pengumuman" class="hover:text-primary-400 transition">Pengumuman Terbaru</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Kontak</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-400">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            info@paiketanwdd.com
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Sekretariat WDD
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-center text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Paiketan Warga Dura Desa. Hak Cipta Dilindungi.</p>
+                <div class="flex gap-4 text-sm">
+                    <a href="#" class="hover:text-white transition">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-white transition">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm', 'bg-white/90', 'border-b', 'border-slate-200');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('shadow-sm', 'bg-white/90', 'border-b', 'border-slate-200');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+    </script>
+</body>
+</html>
