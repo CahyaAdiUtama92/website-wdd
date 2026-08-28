@@ -26,12 +26,12 @@ class UserPolicy
 
     public function create(User $user): bool
     {
-        return $user->role?->name === 'Sekretaris';
+        return in_array($user->role?->name, ['Sekretaris', 'Admin']);
     }
 
     public function update(User $user, User $model): bool
     {
-        return $user->role?->name === 'Sekretaris' || $user->id === $model->id;
+        return in_array($user->role?->name, ['Sekretaris', 'Admin']) || $user->id === $model->id;
     }
 
     public function delete(User $user, User $model): bool
@@ -41,7 +41,7 @@ class UserPolicy
 
     public function deleteAny(User $user): bool
     {
-        return $user->role?->name === 'Sekretaris';
+        return in_array($user->role?->name, ['Sekretaris', 'Admin']);
     }
 
     public function restore(User $user, User $model): bool
