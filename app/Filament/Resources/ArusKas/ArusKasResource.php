@@ -58,7 +58,29 @@ class ArusKasResource extends Resource
                     ->label('Jumlah')
                     ->numeric()
                     ->required()
-                    ->prefix('Rp'),
+                    ->prefix('Rp')
+                    ->rules([
+                        fn ($get, $record) => function (string $attribute, $value, \Closure $fail) use ($get, $record) {
+                            if ($get('tipe') === 'pengeluaran') {
+                                $totalPemasukan = \App\Models\ArusKas::where('tipe', 'pemasukan')->sum('jumlah');
+                                $totalPengeluaran = \App\Models\ArusKas::where('tipe', 'pengeluaran')->sum('jumlah');
+                                
+                                if ($record) {
+                                    if ($record->tipe === 'pengeluaran') {
+                                        $totalPengeluaran -= $record->jumlah;
+                                    } elseif ($record->tipe === 'pemasukan') {
+                                        $totalPemasukan -= $record->jumlah;
+                                    }
+                                }
+
+                                $saldoSaatIni = $totalPemasukan - $totalPengeluaran;
+
+                                if ($value > $saldoSaatIni) {
+                                    $fail("Jumlah pengeluaran tidak boleh melebihi total kas saat ini (Rp " . number_format($saldoSaatIni, 0, ',', '.') . ").");
+                                }
+                            }
+                        },
+                    ]),
 
                 \Filament\Forms\Components\Textarea::make('keterangan')
                     ->label('Keterangan')
