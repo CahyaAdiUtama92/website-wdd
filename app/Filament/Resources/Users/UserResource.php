@@ -48,13 +48,13 @@ class UserResource extends Resource
                     ->dehydrated()
                     ->unique(ignoreRecord: true),
                 \Filament\Forms\Components\TextInput::make('name')->required()->label('Nama Lengkap')->placeholder('Masukkan nama lengkap anggota...'),
-                \Filament\Forms\Components\TextInput::make('email')->email()->required()->label('Email')->placeholder('Masukkan alamat email anggota...'),
+                \Filament\Forms\Components\TextInput::make('email')->email()->required()->label('Email')->placeholder('Masukkan alamat email anggota...')->unique(ignoreRecord: true)->disabled(fn (string $operation): bool => $operation === 'edit'),
                 \Filament\Forms\Components\TextInput::make('no_telp')->tel()->label('No. Telepon')->placeholder('Masukkan nomor telepon anggota...'),
                 \Filament\Forms\Components\Textarea::make('alamat')->label('Alamat')->columnSpanFull()->placeholder('Masukkan alamat rumah anggota...'),
                 \Filament\Forms\Components\TextInput::make('password')->password()->revealable()->dehydrateStateUsing(fn ($state) => \Illuminate\Support\Facades\Hash::make($state))->dehydrated(fn ($state) => filled($state))->required(fn (string $context): bool => $context === 'create')->placeholder('Masukkan kata sandi anggota...'),
-                \Filament\Forms\Components\Select::make('role_id')->relationship('role', 'name')->label('Role')->default(fn () => \App\Models\Role::where('name', 'Anggota')->value('id'))->required()->disabled(fn () => !in_array(auth()->user()->role?->name, ['Sekretaris', 'Admin'])),
+                \Filament\Forms\Components\Select::make('role_id')->relationship('role', 'name')->label('Role')->default(fn () => \App\Models\Role::where('name', 'Anggota')->value('id'))->required()->disabled(fn (?\Illuminate\Database\Eloquent\Model $record) => auth()->user()->role?->name !== 'Admin' || ($record && $record->id === auth()->id()))->dehydrated(),
                 \Filament\Forms\Components\DatePicker::make('tanggal_bergabung')->label('Tanggal Bergabung')->nullable()->disabled(fn () => !in_array(auth()->user()->role?->name, ['Sekretaris', 'Admin'])),
-                \Filament\Forms\Components\Toggle::make('is_active')->default(true)->label('Status Aktif')->disabled(fn () => !in_array(auth()->user()->role?->name, ['Sekretaris', 'Admin'])),
+                \Filament\Forms\Components\Toggle::make('is_active')->default(true)->label('Status Aktif')->disabled(fn (?\Illuminate\Database\Eloquent\Model $record) => !in_array(auth()->user()->role?->name, ['Sekretaris', 'Admin']) || ($record && $record->id === auth()->id()))->dehydrated(),
                 \Filament\Forms\Components\Toggle::make('is_super_admin')->label('Super Admin')->visible(fn() => auth()->user()->is_super_admin),
             ]);
     }
