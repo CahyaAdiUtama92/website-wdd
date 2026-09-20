@@ -164,6 +164,8 @@ class RapatResource extends Resource
                                         FileUpload::make('file_dokumen')
                                             ->label('File Lampiran')
                                             ->columnSpanFull()
+                                            ->downloadable()
+                                            ->openable()
                                             ->disabled($notulenDisabled),
                                     ])
                                     ->columns(1),
