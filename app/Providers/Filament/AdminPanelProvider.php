@@ -44,6 +44,11 @@ class AdminPanelProvider extends PanelProvider
             // ->widgets([
             //     AccountWidget::class,
             // ])
+            ->userMenuItems([
+                'profile' => \Filament\Navigation\MenuItem::make()
+                    ->label(fn (): string => auth()->user()->name ?? 'Ubah Anggota')
+                    ->url(fn (): string => \App\Filament\Resources\Users\UserResource::getUrl('index') . '?tableAction=edit&tableActionRecord=' . auth()->id()),
+            ])
             ->navigationGroups([
                 'Keanggotaan',
                 'Keuangan',
