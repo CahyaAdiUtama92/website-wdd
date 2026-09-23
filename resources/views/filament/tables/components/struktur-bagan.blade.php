@@ -47,6 +47,7 @@
                                     }
                                 ?>
                             </div>
+                            <?php if(auth()->check() && (auth()->user()->is_super_admin || auth()->user()->role?->name === 'Ketua')): ?>
                             <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <button wire:click="mountTableAction('edit', '<?= $item->getKey() ?>')" type="button" class="text-white hover:text-gray-200" title="Edit">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,6 +60,7 @@
                                     </svg>
                                 </button>
                             </div>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
                 <?php else: ?>
