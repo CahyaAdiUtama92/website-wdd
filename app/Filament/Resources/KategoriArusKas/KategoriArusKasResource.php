@@ -31,7 +31,11 @@ class KategoriArusKasResource extends Resource
             ->components([
                 \Filament\Forms\Components\TextInput::make('nama')
                     ->label('Nama Kategori')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->validationMessages([
+                        'unique' => 'Nama kategori sudah digunakan.',
+                    ]),
                 \Filament\Forms\Components\Select::make('tipe')
                     ->label('Tipe')
                     ->options([
