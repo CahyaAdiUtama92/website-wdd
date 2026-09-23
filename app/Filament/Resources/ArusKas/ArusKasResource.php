@@ -47,12 +47,23 @@ class ArusKasResource extends Resource
 
                 \Filament\Forms\Components\Select::make('kategori_id')
                     ->label('Kategori')
-                    ->options(fn ($get) => KategoriArusKas::when(
+                    ->options(fn ($get, string $operation) => KategoriArusKas::when(
                         $get('tipe'),
                         fn ($q, $tipe) => $q->where('tipe', $tipe)
-                    )->pluck('nama', 'id'))
+                    )
+                    ->when($operation === 'create', fn ($q) => $q->where('nama', '!=', 'Iuran Wajib'))
+                    ->pluck('nama', 'id'))
                     ->required()
+                    ->live()
                     ->searchable(),
+
+                \Filament\Forms\Components\Select::make('user_id')
+                    ->label('Anggota')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->visible(fn ($get) => \App\Models\KategoriArusKas::find($get('kategori_id'))?->nama === 'Iuran Wajib'),
 
                 \Filament\Forms\Components\TextInput::make('jumlah')
                     ->label('Jumlah')
