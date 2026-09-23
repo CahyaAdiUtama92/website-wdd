@@ -29,7 +29,13 @@ class JabatanResource extends Resource
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\TextInput::make('name')->required()->label('Nama Jabatan'),
+                \Filament\Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->label('Nama Jabatan')
+                    ->unique(ignoreRecord: true)
+                    ->validationMessages([
+                        'unique' => 'Nama jabatan sudah digunakan.',
+                    ]),
             ]);
     }
 
