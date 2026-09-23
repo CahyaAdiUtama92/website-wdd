@@ -29,7 +29,17 @@ class PeriodeKepengurusanResource extends Resource
     {
         return $schema
             ->components([
-                \Filament\Forms\Components\TextInput::make('tahun_mulai')->required()->numeric()->label('Tahun Mulai'),
+                \Filament\Forms\Components\TextInput::make('tahun_mulai')
+                    ->required()
+                    ->numeric()
+                    ->label('Tahun Mulai')
+                    ->unique(
+                        ignoreRecord: true,
+                        modifyRuleUsing: fn (\Illuminate\Validation\Rules\Unique $rule, $get) => $rule->where('tahun_selesai', $get('tahun_selesai'))
+                    )
+                    ->validationMessages([
+                        'unique' => 'Periode kepengurusan ini sudah ada.',
+                    ]),
                 \Filament\Forms\Components\TextInput::make('tahun_selesai')->required()->numeric()->label('Tahun Selesai'),
                 \Filament\Forms\Components\Toggle::make('is_active')->default(false)->label('Status Aktif'),
             ]);
