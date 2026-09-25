@@ -16,7 +16,7 @@ class UserPolicy
 
     public function viewAny(User $user): bool
     {
-        return in_array($user->role?->name, ['Ketua', 'Sekretaris', 'Bendahara']); // Semua bisa melihat daftar anggota
+        return true; // Semua bisa melihat daftar anggota
     }
 
     public function view(User $user, User $model): bool
