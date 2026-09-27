@@ -6,18 +6,16 @@
 
     {{-- Form Container --}}
     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl ring-1 ring-gray-900/5 w-100 border border-[#E67E22]">
-        <form id="form" wire:submit="authenticate">
+        <h2 class="text-2xl font-bold text-center text-[#2E8B57] mb-2">Atur Ulang Password</h2>
+        <p class="text-sm text-gray-500 text-center mb-6">
+            Buat password baru untuk akun Anda.
+        </p>
+
+        <form id="form" wire:submit="resetPassword">
             {{ $this->form }}
 
-            @if (filament()->hasPasswordReset())
-                <div class="mt-4 text-sm text-right">
-                    <a class="font-medium text-[#2E8B57] hover:text-[#E67E22]" href="{{ filament()->getRequestPasswordResetUrl() }}">
-                        Lupa Password?
-                    </a>
-                </div>
-            @endif
             <x-filament::button type="submit" class="w-full mt-8 py-2.5 text-lg" form="form" style="margin-top: 2rem;">
-                Masuk
+                Simpan Password Baru
             </x-filament::button>
         </form>
     </div>

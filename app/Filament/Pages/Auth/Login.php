@@ -29,7 +29,8 @@ class Login extends BaseAuth
     {
         return parent::getPasswordFormComponent()
             ->label('Password')
-            ->placeholder('Masukkan kata sandi/password anda...');
+            ->placeholder('Masukkan kata sandi/password anda...')
+            ->hint(null);
     }
 
     /**
