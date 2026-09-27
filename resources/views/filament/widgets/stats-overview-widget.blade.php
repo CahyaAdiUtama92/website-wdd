@@ -54,7 +54,7 @@
                     </a></div>
 
                     <!-- Iuran Bulan Ini (Hanya Bendahara & Super Admin) -->
-                    @if($user && ($user->is_super_admin || $user->role?->name === 'bendahara'))
+                    @if($user && ($user->is_super_admin || $user->role?->name === 'Bendahara'))
                     <div class="bg-[#FAFAFA] rounded-lg p-5 border border-[#2E8B57] flex flex-col justify-center">
                         <div class="text-[#717683] text-sm font-bold uppercase tracking-wider mb-1">Iuran Bulan Ini</div>
                         <div class="text-2xl font-bold text-[#09090B]">{{ $stats['iuran_bulan_berjalan']['lunas'] }} / {{ $stats['iuran_bulan_berjalan']['total'] }} Anggota</div>
